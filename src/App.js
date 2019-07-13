@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import './styles.scss';
 
-const project_name = "drum-project";
-
 const bankOne = [
   {
     keyCode: 81,
@@ -187,9 +185,7 @@ class DrumPad extends Component {
 
 //PadBank class
 class PadBank extends Component {
-  constructor(props) {
-    super(props);    
-  }
+  
   render() {
     let padBank;
     this.props.power ?
@@ -295,18 +291,14 @@ class App extends Component {
   render() {
 
     const powerSlider = this.state.power ? { float: 'right' } : { float: 'left' };
-
-    const bankSlider = this.state.currentPadBank === bankOne ? { float: 'left' } : { float: 'right' }; 
+    const bankSlider = this.state.currentPadBank === bankOne ? { float: 'left' } : { float: 'right' };     
     
-    {
-      document.querySelectorAll('.clip').forEach(sound => {
-        sound.volume = this.state.sliderVal
-      });
-    }
+    document.querySelectorAll('.clip').forEach(sound => {
+      sound.volume = this.state.sliderVal
+    });  
 
     return (
       <div id="drum-machine" className="inner-container">
-
         <PadBank power={this.state.power}
           updateDisplay={this.displayClipName}
           clipVolume={this.state.sliderVal}
@@ -335,12 +327,9 @@ class App extends Component {
             </div>
           </div>
         </div>
-
       </div>
     )
-
   }
-
 }
 
 ReactDOM.render(
